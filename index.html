@@ -144,6 +144,77 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-customMessageConverterError" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/article/customMessageConverterError.html">IDEA中Gradle项目控制台输出乱码问题</a>
+    </h1>
+  
+
+	<!--显示阅读次数-->
+	
+	<!--显示阅读次数完毕-->
+        
+        <a href="/article/customMessageConverterError.html" class="archive-article-date">
+  	<time datetime="2021-07-30T08:01:07.615Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在学习Spring Boot中自定义MessageConverter时遇到到如下错误：<br><img src="https://gitee.com/lee_ve/blogimg/raw/master/img/20210730160442.png" alt="error"><br><img src="https://gitee.com/lee_ve/blogimg/raw/master/img/20210730160458.png" alt="error"><br>查找源码得知是自定义的xxxxMessageConverter实现HttpMessageConverter的时候多override了一个带参方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;MediaType&gt; <span class="title">getSupportedMediaTypes</span><span class="params">(Class&lt;?&gt; clazz)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>由于该方法返回null值，使得在调用下图代码中addAll方法时报错</p>
+<p><img src="https://gitee.com/lee_ve/blogimg/raw/master/img/20210730161237.png" alt="error"></p>
+<p>因此解决方法为删除此覆盖方法。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/article/customMessageConverterError.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-garbledInGradleProject" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
