@@ -144,6 +144,79 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Invalid-bound-statement-in-Maven-Project-Using-Mybatis-Plus" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/article/Invalid-bound-statement-in-Maven-Project-Using-Mybatis-Plus.html">解决Invalid bound statement (not found)</a>
+    </h1>
+  
+
+	<!--显示阅读次数-->
+	
+	<!--显示阅读次数完毕-->
+        
+        <a href="/article/Invalid-bound-statement-in-Maven-Project-Using-Mybatis-Plus.html" class="archive-article-date">
+  	<time datetime="2021-09-02T08:38:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在使用Mybatis Plus的过程中遇到了如下问题，对此进行记录。<br><img src="https://gitee.com/lee_ve/blogimg/raw/master/img/20210902164139.png" alt="error"><br>当出现该问题时，主要有三个方面的原因：</p>
+<ol>
+<li>xml文件不存在</li>
+<li>xml中的数据statement和mapper中的不匹配</li>
+<li>xml文件位置不对</li>
+</ol>
+<p>在我的项目中首先排除掉了前两个问题，因此很有可能是第三个原因导致的。下面进行进一步分析：由于我的项目是通过Mybatis-Plus的 AutoGenerator 自动生成Entity、Mapper、Mapper XML、Service、Controller 等各个模块的代码，其中Mapper XML 文件的位置在mapper文件夹下。<img src="https://gitee.com/lee_ve/blogimg/raw/master/img/20210902165127.png" width = "20%" height = "20%" align=center /><br>此外在课程中了解到默认情况下maven工程src/main/java目录下的所有资源文件是不发布到target目录下的，需要在pom.xml文件中配置文件发布配置，对该目录下的xml文件也进行打包.代码如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 项目打包时会将java目录中的*.xml文件也进行打包 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/java<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.xml<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>false<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/article/Invalid-bound-statement-in-Maven-Project-Using-Mybatis-Plus.html">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-differenceBetweenGetAndPostRequest" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -304,9 +377,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>编译Gradle项目时遇到控制台乱码，如图所示<br><img src="https://gitee.com/lee_ve/blogimg/raw/master/img/20210723123140.png"></p>
+        <p>编译Gradle项目时遇到控制台乱码，如图所示<br><img src="https://gitee.com/lee_ve/blogimg/raw/master/img/20210723123140.png" alt="error"></p>
 <p>解决方案：在IDEA中的Help-&gt;Edit custom VM Options中添加一行代码并重启即可。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-Dfile.encoding=UTF-8</span><br></pre></td></tr></table></figure>
+
       
 
       
