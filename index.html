@@ -167,10 +167,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>解决方案：在控制台中切换到执行错误的微服务目录下，执行如下指令，即可看到错误信息</p>
+        <p>方案1：在控制台中切换到执行错误的微服务目录下，执行如下指令，即可看到错误信息</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean spring-boot:run -X</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://gitee.com/lee_ve/blogimg/raw/master/img/20210921110751.png" alt="error"></p>
+<p>方案2：在微服务的main函数中抛出异常信息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            SpringApplication.run(ServiceOssApplication.class);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Throwable e) &#123;</span><br><span class="line">            log.error(e.getMessage(),e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
       
 
